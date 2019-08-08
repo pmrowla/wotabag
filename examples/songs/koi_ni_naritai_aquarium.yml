@@ -1,0 +1,501 @@
+title: "Koi ni Naritai AQUARIUM"
+filename: "/home/pi/wotabag/mp3/koi_ni_naritai_aquarium.mp3"
+initial_offset: 24050
+patterns:
+  # intro
+  - type: "koinifufu"
+    bpm: 139
+    left: "you"
+    center: "you"
+    right: "you"
+  - type: "hold"
+  - type: "hold"
+    count: 2
+    left: "none"
+    center: "none"
+    right: "none"
+  - type: "koinifufu"
+    left: "you"
+    center: "you"
+    right: "you"
+    kwargs:
+      reverse: True
+  - type: "hold"
+  - type: "hold"
+    count: 2
+    left: "none"
+    center: "none"
+    right: "none"
+  - type: "koinifufu"
+    left: "you"
+    center: "you"
+    right: "you"
+  - type: "hold"
+  - type: "hold"
+    count: 2
+    left: "none"
+    center: "none"
+    right: "none"
+  - type: "normal"
+    count: 3
+    left: "you"
+    center: "you"
+    right: "you"
+  # open
+  - type: "koiniopen"
+  - type: "hold"
+  - type: "normal"
+  # welcome
+  - type: "koiniopen"
+  - type: "hold"
+  - type: "normal"
+    count: 2
+  # asobi
+  - type: "flash2"
+    count: 2
+  - type: "flash"
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+
+  # verse 1
+  - type: "normal"
+    bpm: 139
+    count: 14
+    left: "you"
+    center: "you"
+    right: "you"
+  - type: "normal"
+    count: 2
+    left: "kanan"
+    right: "kanan"
+  - type: "normal"
+    count: 4
+    left: "ruby"
+    right: "ruby"
+  - type: "normal"
+    count: 4
+    left: "hanamaru"
+    right: "hanamaru"
+  - type: "normal"
+    count: 4
+    left: "yoshiko"
+    right: "yoshiko"
+  # sakanatachi no paatii
+  - type: "normal"
+    count: 2
+    left: "kanan"
+    right: "kanan"
+  - type: "normal"
+    count: 2
+    left: "you"
+    right: "you"
+  # tottemo
+  - type: "koinitottemo"
+    count: 2
+  - type: "normal"
+  - type: "normalodd"
+  # -[pukapuka]
+  - type: "normaleven"
+    left: "hanamaru"
+    right: "hanamaru"
+  - type: "slow"
+  - type: "normal"
+    count: 10
+    left: "you"
+    right: "you"
+  - type: "slow"
+  # i miss you
+  - type: "slow3"
+    kwargs:
+      hold: True
+  - type: "hold"
+    count: 5
+    kwargs:
+      hold: True
+
+  # chorus
+  - type: "normal"
+    count: 1
+  - type: "normalodd"
+  # [yeah]
+  - type: "chase"
+    count: 3
+  - type: "normal"
+    count: 11
+  # [fantastic love]
+  - type: "flash"
+    count: 3
+  - type: "hold"
+    count: 2
+    kwargs:
+      hold: True
+  - type: "hold"
+    count: 2
+    left: "none"
+    center: "none"
+    right: "none"
+  # [yeah]
+  - type: "chase"
+    count: 3
+    left: "you"
+    center: "you"
+    right: "you"
+  # kidzuite
+  - type: "normal"
+    count: 5
+  # (hime)-teta
+  - type: "hold"
+    count: 1
+    left: "none"
+    center: "none"
+    right: "none"
+  # [ooooh yay]
+  - type: "ohhai"
+    left: "you"
+    center: "you"
+    right: "you"
+  - type: "chase"
+    count: 3
+  # kore kara
+  - type: "normal"
+    count: 9
+  - type: "normalodd"
+  # [nai]
+  - type: "chase"
+    count: 1
+
+  # break
+  - type: "chase"
+    count: 2
+  - type: "normal"
+    count: 5
+  - type: "flash2"
+    count: 4
+  - type: "hold"
+    count: 4
+    kwargs:
+      hold: True
+
+  # verse 2
+  - type: "normal"
+    count: 8
+  - type: "normal"
+    count: 2
+    left: "mari"
+    right: "mari"
+  - type: "normal"
+    count: 2
+    left: "dia"
+    right: "dia"
+  - type: "normal"
+    count: 2
+    left: "you"
+    right: "you"
+  - type: "normal"
+    count: 2
+    left: "kanan"
+    right: "kanan"
+  # shikkari
+  - type: "koinitottemo"
+    count: 2
+  - type: "normal"
+  - type: "normalodd"
+  # -[awa awa]
+  - type: "normaleven"
+    left: "hanamaru"
+    right: "hanamaru"
+  - type: "slow"
+  - type: "normal"
+    count: 10
+    left: "you"
+    right: "you"
+  - type: "slow"
+  # i love you
+  - type: "slow"
+  # [i love you]
+  - type: "flash"
+    count: 2
+    left: "kanan"
+    right: "kanan"
+  - type: "chase"
+    count: 4
+  - type: "hold"
+    count: 2
+    left: "none"
+    center: "none"
+    right: "none"
+
+  # chorus 2
+  - type: "normal"
+    count: 1
+    left: "you"
+    center: "you"
+    right: "you"
+  - type: "normalodd"
+  # [yeah]
+  - type: "chase"
+    count: 3
+  - type: "normal"
+    count: 11
+  # [fantastic eyes]
+  - type: "flash"
+    count: 3
+  - type: "hold"
+    count: 2
+    kwargs:
+      hold: True
+  - type: "hold"
+    count: 2
+    left: "none"
+    center: "none"
+    right: "none"
+  # [yeah]
+  - type: "chase"
+    count: 3
+    left: "you"
+    center: "you"
+    right: "you"
+  # hajimete
+  - type: "normal"
+    count: 5
+  # (-ainda) mon
+  - type: "hold"
+    count: 1
+    left: "none"
+    center: "none"
+    right: "none"
+  # [ooooh yay]
+  - type: "ohhai"
+    left: "you"
+    center: "you"
+    right: "you"
+  - type: "chase"
+    count: 3
+  # tsugi kara
+  - type: "normal"
+    count: 9
+  - type: "normalodd"
+  # [nai]
+  - type: "chase"
+    count: 1
+
+  # break
+  - type: "chase"
+    count: 2
+  # wow wo
+  - type: "spin"
+  - type: "spin"
+    kwargs:
+      reverse: True
+  - type: "normal"
+    count: 2
+    left: "riko"
+    right: "riko"
+  - type: "normal"
+    left: "you"
+    right: "you"
+  # wow wo
+  - type: "spin"
+  - type: "spin"
+    kwargs:
+      reverse: True
+  - type: "normal"
+    count: 2
+  # [fantastic]
+  - type: "flash"
+    count: 3
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+  # asobimashou
+  - type: "normal"
+    count: 2
+    left: "chika"
+    center: "you"
+    right: "chika"
+
+  # break
+  # fufu
+  - type: "koiniopen"
+    left: "you"
+    center: "you"
+    right: "you"
+  - type: "hold"
+  - type: "hold"
+    count: 2
+    left: "none"
+    center: "none"
+    right: "none"
+  # fufu
+  - type: "koiniopen"
+    left: "you"
+    center: "you"
+    right: "you"
+  - type: "hold"
+  - type: "hold"
+    count: 2
+    left: "none"
+    center: "none"
+    right: "none"
+  # fufu
+  - type: "koiniopen"
+    left: "you"
+    center: "you"
+    right: "you"
+  - type: "hold"
+  - type: "hold"
+    count: 6
+    left: "none"
+    center: "none"
+    right: "none"
+  # fufu
+  - type: "koiniopen"
+    left: "you"
+    center: "you"
+    right: "you"
+  - type: "hold"
+  - type: "hold"
+    count: 2
+    left: "none"
+    center: "none"
+    right: "none"
+  # fufu
+  - type: "koiniopen"
+    left: "you"
+    center: "you"
+    right: "you"
+  - type: "hold"
+  - type: "hold"
+    count: 10
+    left: "none"
+    center: "none"
+    right: "none"
+  - type: "hai"
+    left: "you"
+    center: "you"
+    right: "you"
+    count: 7
+  - type: "hptfufufu"
+  - type: "hai"
+    left: "you"
+    center: "you"
+    right: "you"
+    count: 7
+  - type: "hptfufufu"
+  # puka puka
+  - type: "normal"
+    count: 10
+  - type: "hold"
+    count: 4
+    left: "none"
+    center: "none"
+    right: "none"
+
+  # you solo
+  # (akua)-riumu de
+  - type: "hold"
+  - type: "slow3"
+    center: "you"
+    kwargs:
+      hold: True
+  - type: "hold"
+    count: 12
+    kwargs:
+      hold: True
+  - type: "chase"
+    count: 16
+
+  # chorus 3
+  # (akua)-riumu de
+  - type: "normal"
+    count: 1
+    left: "you"
+    right: "you"
+  - type: "normalodd"
+  # [yeah]
+  - type: "chase"
+    count: 3
+  # (kidzui)-te
+  - type: "normal"
+    count: 5
+  # (himete)-ta
+  - type: "hold"
+    count: 1
+    left: "none"
+    center: "none"
+    right: "none"
+  # [ooooh yay]
+  - type: "ohhai"
+    left: "you"
+    center: "you"
+    right: "you"
+  - type: "chase"
+    count: 3
+  # kore kara
+  - type: "normal"
+    count: 13
+  - type: "normalodd"
+  # [nai]
+  - type: "chase"
+    count: 1
+
+  # outro
+  - type: "chase"
+    count: 4
+  - type: "normal"
+    count: 4
+  # [fantastic love]
+  - type: "flash"
+    count: 3
+  - type: "hold"
+    count: 3
+    kwargs:
+      hold: True
+  - type: "normal"
+    count: 3
+  # yeah yeah
+  - type: "hai"
+    count: 2
+  - type: "hold"
+    count: 4
+    left: "none"
+    center: "none"
+    right: "none"
+  # yeah
+  - type: "chase"
+    count: 4
+    left: "you"
+    center: "you"
+    right: "you"
+  - type: "hold"
+    bpm: 137
+    count: 4
+    left: "none"
+    center: "none"
+    right: "none"
+  # yeah
+  - type: "chase"
+    bpm: 108
+    count: 4
+    left: "you"
+    center: "you"
+    right: "you"
+  - type: "hold"
+    bpm: 84
+    count: 4
+    left: "none"
+    center: "none"
+    right: "none"
+  # fufufu
+  - type: "flash"
+    bpm: 139
+    count: 2
+    left: "you"
+    center: "you"
+    right: "you"
+  - type: "hold"
+    kwargs:
+      hold: True

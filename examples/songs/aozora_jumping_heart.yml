@@ -1,0 +1,288 @@
+title: "Aozora Jumping Heart"
+filename: "/home/pi/wotabag/mp3/aozora_jumping_heart.mp3"
+initial_offset: 3210
+patterns:
+  # intro
+  - type: "slow"
+    bpm: 200
+    count: 4
+  - type: "hai"
+    count: 12
+  - type: "slow"
+    count: 2
+
+  # verse 1
+  - type: "normal"
+    count: 27
+  - type: "senohai"
+  - type: "ohhai"
+    count: 3
+  - type: "slow3"
+    # (Motto!)
+  - type: "flash"
+    count: 2
+    left: "ruby"
+    right: "hanamaru"
+  - type: "normaleven"
+    left: "yoshiko"
+    right: "yoshiko"
+  - type: "normal"
+    count: 2
+  - type: "normalodd"
+    # (Let's go!)
+  - type: "flash"
+    count: 2
+    left: "ruby"
+    right: "hanamaru"
+  - type: "normaleven"
+    left: "yoshiko"
+    right: "yoshiko"
+  - type: "normal"
+    count: 3
+  - type: "slow3"
+    kwargs:
+      hold: True
+  - type: "hold"
+    count: 2
+    kwargs:
+      hold: True
+  - type: "hold"
+    # hora, issho ni ne
+  - type: "aozorahora"
+  - type: "hold"
+    kwargs:
+      hold: True
+  - type: "hold"
+
+  # chorus
+  - type: "normal"
+    count: 15
+  # (FU!)
+  - type: "chase"
+    left: "none"
+    center: "none"
+    count: 2
+  - type: "normal"
+    count: 8
+    left: "yoshiko"
+    center: "yoshiko"
+    # ashita e to susumeru seishun masshigura
+  - type: "aozoraashita"
+  - type: "normal"
+    count: 15
+  # (FU!)
+  - type: "chase"
+    left: "none"
+    center: "none"
+    count: 2
+  - type: "normal"
+    count: 8
+    left: "yoshiko"
+    center: "yoshiko"
+    # okoru no ka wakaranai no mo
+  - type: "aozoraashita"
+    # tanoshimi sa
+  - type: "slow3"
+    kwargs:
+      hold: True
+  - type: "hold"
+    kwargs:
+      hold: True
+    count: 4
+  - type: "hold"
+
+  # break
+  - type: "hai"
+    count: 8
+  - type: "slow"
+    count: 2
+
+  # verse 2
+  # open mind
+  - type: "normal"
+    count: 8
+    center: "chika"
+    # saisho kara
+  - type: "normal"
+    count: 4
+    center: "yoshiko"
+    # dekiru hazu
+  - type: "normal"
+    count: 4
+    center: "you"
+  - type: "normal"
+    count: 4
+    center: "ruby"
+    # tobidasou
+  - type: "normal"
+    count: 7
+    center: "yoshiko"
+  - type: "senohai"
+  - type: "ohhai"
+    count: 3
+  - type: "slow3"
+    # (Motto!)
+  - type: "flash"
+    count: 2
+    left: "ruby"
+    right: "hanamaru"
+  - type: "normaleven"
+    left: "yoshiko"
+    right: "yoshiko"
+  - type: "normal"
+    count: 2
+  - type: "normalodd"
+    # (Let's go!)
+  - type: "flash"
+    count: 2
+    left: "ruby"
+    right: "hanamaru"
+  - type: "normaleven"
+    left: "yoshiko"
+    right: "yoshiko"
+  - type: "normal"
+    count: 3
+  - type: "slow3"
+    kwargs:
+      hold: True
+  - type: "hold"
+    count: 2
+    kwargs:
+      hold: True
+  - type: "hold"
+    # hora, issho ni ne
+  - type: "aozorahora"
+  - type: "hold"
+    kwargs:
+      hold: True
+  - type: "hold"
+
+  # chorus
+  - type: "normal"
+    count: 15
+  # (FU!)
+  - type: "chase"
+    left: "none"
+    center: "none"
+    count: 2
+  - type: "normal"
+    count: 8
+    left: "yoshiko"
+    center: "yoshiko"
+    # kaneyou negai wo seishun pikkari da
+  - type: "aozoraashita"
+  - type: "normal"
+    count: 15
+  # (FU!)
+  - type: "chase"
+    left: "none"
+    center: "none"
+    count: 2
+  - type: "normal"
+    count: 8
+    left: "yoshiko"
+    center: "yoshiko"
+    # seitsumei wa dekinai kedo
+  - type: "aozoraashita"
+    # daijoubu sa
+  - type: "slow3"
+    kwargs:
+      hold: True
+  - type: "hold"
+    kwargs:
+      hold: True
+    count: 4
+  - type: "hold"
+
+  # break
+  - type: "hai"
+    count: 26
+
+  # bridge
+  - type: "normal"
+    count: 2
+  - type: "normal"
+    count: 8
+    center: "riko"
+  - type: "normal"
+    count: 7
+    center: "yoshiko"
+  - type: "normal"
+    count: 3
+    center: "mari"
+  - type: "normal"
+    count: 2
+    center: "yoshiko"
+  - type: "normal"
+    count: 3
+    center: "mari"
+  - type: "normal"
+    count: 5
+    center: "yoshiko"
+  - type: "slow"
+    count: 2
+
+  # pause
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+    count: 12
+
+  # hajimetai my story
+  - type: "slow"
+    left: "yoshiko"
+    center: "yoshiko"
+    right: "yoshiko"
+    count: 2
+  # chorus
+  - type: "normal"
+    count: 11
+  # (FU!)
+  - type: "chase"
+    left: "none"
+    center: "none"
+    count: 2
+  - type: "normal"
+    count: 8
+    left: "yoshiko"
+    center: "yoshiko"
+    # ashita e to susumeru seishun masshigura
+  - type: "aozoraashita"
+  - type: "normal"
+    count: 15
+  # (FU!)
+  - type: "chase"
+    left: "none"
+    center: "none"
+    count: 2
+  - type: "normal"
+    count: 8
+    left: "yoshiko"
+    center: "yoshiko"
+    # okoru no ka wakaranai mirai
+  - type: "aozoraashita"
+  - type: "normal"
+    count: 8
+    # setsumei wa dekinai kedo
+  - type: "aozoraashita"
+  - type: "chase"
+    left: "none"
+    right: "none"
+    count: 16
+  - type: "aozoramasshigura"
+    left: "yoshiko"
+    right: "yoshiko"
+  - type: "chase"
+    count: 8
+  - type: "slow"
+    bpm: 192
+  - type: "slow"
+    bpm: 130
+  - type: "slow3"
+    kwargs:
+      hold: True
+  - type: "hold"
+    kwargs:
+      hold: True
+    count: 8

@@ -1,0 +1,4 @@
+dbus-python==1.2.8
+rpi-ws281x==4.2.2
+ruamel.yaml==0.15.100
+tinyrpc[gevent,wsgi]==1.0.2

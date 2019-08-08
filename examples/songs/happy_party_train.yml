@@ -1,0 +1,198 @@
+title: "Happy Party Train"
+filename: "/home/pi/wotabag/mp3/happy_party_train.mp3"
+initial_offset: 820
+patterns:
+  # intro
+  - type: "slow"
+    bpm: 170
+    count: 4
+    left: "kanan"
+    center: "kanan"
+    right: "kanan"
+  - type: "normal"
+    count: 8
+  - type: "hai"
+    count: 12
+  - type: "hptintrofu"
+  - type: "hold"
+    count: 4
+    kwargs:
+      hold: True
+
+  # verse 1
+  - type: "normal"
+    count: 12
+  - type: "slow3"
+    kwargs:
+      hold: True
+  - type: "hold"
+    count: 3
+    kwargs:
+      hold: True
+  # (saa) doko e (starts on beat 3)
+  - type: "normal"
+    count: 15
+  - type: "hptsyncofu"
+  # (ai)-tai no wa
+  - type: "normal"
+    count: 12
+    center: "yoshiko"
+  - type: "slow3"
+    kwargs:
+      hold: True
+  - type: "hold"
+    count: 3
+    kwargs:
+      hold: True
+  - type: "normal"
+    count: 12
+  - type: "senohai"
+    center: "kanan"
+  - type: "ohhai"
+    count: 4
+    center: "hanamaru"
+  - type: "normal"
+    count: 8
+  - type: "hptfufufu"
+    center: "kanan"
+  - type: "hold"
+    count: 2
+    kwargs:
+      hold: True
+
+  # chorus 1
+  - type: "normal"
+    count: 16
+  # (kitai) de
+  - type: "slow"
+    count: 3
+  # tooi eki de
+  - type: "hptsyncofu"
+  - type: "normal"
+    count: 6
+  - type: "slow"
+
+  # break
+  - type: "hai"
+    count: 12
+  - type: "hptintrofu"
+  - type: "hold"
+    count: 4
+    kwargs:
+      hold: True
+
+  # verse 2
+  - type: "normal"
+    count: 12
+    center: "riko"
+  - type: "slow3"
+    kwargs:
+      hold: True
+  - type: "hold"
+    count: 3
+    kwargs:
+      hold: True
+  # dakara mou (starts on beat 3)
+  - type: "normal"
+    center: "you"
+    count: 12
+  # (kuchizu)-sande
+  - type: "senohai"
+    center: "kanan"
+  # (ki ni) shinai
+  - type: "ohhai"
+    count: 3
+    center: "chika"
+  - type: "ohhai"
+    count: 1
+    center: "dia"
+  - type: "normal"
+    count: 6
+  # owaranai
+  - type: "normal"
+    count: 9
+    center: "mari"
+  - type: "normal"
+    count: 9
+    center: "ruby"
+  - type: "hptfufufu"
+    center: "kanan"
+  - type: "hold"
+    count: 2
+    kwargs:
+      hold: True
+
+  # chorus 2
+  - type: "normal"
+    count: 16
+  # (reeru) wa
+  - type: "slow"
+    count: 3
+  # wakaranai ne
+  - type: "hptsyncofu"
+  - type: "normal"
+    count: 6
+  - type: "slow3"
+    kwargs:
+      hold: True
+  - type: "hold"
+    count: 5
+    kwargs:
+      hold: True
+
+  # break
+  - type: "slow"
+    count: 8
+  - type: "normal"
+    count: 20
+
+  # kanan solo
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+  - type: "slow3"
+    left: "kanan"
+    right: "kanan"
+    kwargs:
+      hold: true
+  - type: "hold"
+    count: 12
+    kwargs:
+      hold: true
+  - type: "chase"
+    count: 16
+
+  # chorus 3
+  - type: "normal"
+    count: 16
+    center: "kanan"
+  # (kitai) ni
+  - type: "slow"
+    count: 3
+  # tooi eki de
+  - type: "hptsyncofu"
+  - type: "normal"
+    count: 6
+  - type: "slow"
+    count: 5
+
+  # outro
+  - type: "hai"
+    count: 12
+  - type: "hptintrofu"
+  - type: "hold"
+    count: 4
+    kwargs:
+      hold: True
+  - type: "slow"
+  - type: "slow3"
+    kwargs:
+      hold: True
+  - type: "hold"
+    count: 6
+    kwargs:
+      hold: True
+  - type: "slow3"
+    kwargs:
+      hold: True

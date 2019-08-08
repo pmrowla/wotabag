@@ -1,0 +1,8 @@
+# (HTTP) RPC server host and port
+rpc_host: "127.0.0.1"
+rpc_port: 60715
+
+# initial volume (defaults to muted)
+volume: 25
+playlist:
+  - "aozora_jumping_heart.yml"

@@ -10,6 +10,7 @@ with open('README.rst') as readme_file:
 
 requirements = [
     'dbus-python',
+    'python-mpv',
     'rpi-ws281x',
     'ruamel.yaml',
     'tinyrpc[gevent,wsgi]'

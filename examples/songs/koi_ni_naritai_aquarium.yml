@@ -200,6 +200,8 @@ patterns:
   # shikkari
   - type: "koinitottemo"
     count: 2
+    left: "you"
+    right: "you"
   - type: "normal"
   - type: "normalodd"
   # -[awa awa]

@@ -1,6 +1,6 @@
 title: "Aozora Jumping Heart"
 filename: "/home/pi/wotabag/mp3/aozora_jumping_heart.mp3"
-initial_offset: 3210
+initial_offset: 3040
 patterns:
   # intro
   - type: "slow"

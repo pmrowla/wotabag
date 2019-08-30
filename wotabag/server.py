@@ -166,6 +166,17 @@ class WotabagManager(object):
             print('[mpv] playing: {}'.format(self.song['filename']))
             self.player.play(self.song['filename'])
 
+            # wait for mpv to actually start playing
+            playback_lock = Semaphore(value=0)
+
+            def observer(name, val):
+                if val is not None:
+                    playback_lock.release()
+
+            self.player.observe_property('time-pos', observer)
+            playback_lock.acquire()
+            self.player.unobserve_property('time-pos', observer)
+
             start = time.time()
             ticks = 0
             # drift = 0
@@ -176,7 +187,7 @@ class WotabagManager(object):
                 'right': BladeColor.YOSHIKO,
             }
 
-            initial_offset = self.song.get('initial_offset')
+            initial_offset = self.song.get('initial_offset', 0)
             if initial_offset:
                 time.sleep((start + initial_offset / 1000) - time.time())
 
@@ -216,6 +227,7 @@ class WotabagManager(object):
 
             # end of song, setup next track
             self.current_track += 1
+            time.sleep(5)
 
         self.current_track = 0
         self._status_lock.acquire()

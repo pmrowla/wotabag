@@ -10,7 +10,8 @@ from queue import Queue
 from tinyrpc.transports import ServerTransport
 
 
-IOS_MTU_SIZE = 185
+# IOS_MTU_SIZE = 185
+IOS_MTU_SIZE = 48
 
 
 class DatagramHeader(object):

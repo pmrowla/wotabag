@@ -57,7 +57,7 @@ Raspberry Pi 4
 
 The default BLE MTU used in wotabag is 48 bytes, as this is the largest value that worked in testing with a Pi Zero W.
 However, the maximum allowed BLE MTU size by an iOS device is 185 bytes, and in testing a Raspberry Pi Model 4 did support using 185 bytes.
-If you are running wotabag on a Pi 4, adjusting the value of `MTU_SIZE` in `wotabag/sdp.py` (and the corresponding value in `Constants.swift` for wotabag-remote) to 185 may give you a slight performance increase.
+If you are running wotabag on a Pi 4, adjusting the value of ``MTU_SIZE`` in ``wotabag/sdp.py`` (and the corresponding value in ``Constants.swift`` for wotabag-remote) to 185 may give you a slight performance increase.
 
 Raspberry Pi Zero (W)
 ~~~~~~~~~~~~~~~~~~~~~
@@ -65,44 +65,48 @@ Raspberry Pi Zero (W)
 Since this is written in Python, it is not particularly efficient, and since Linux is not a real-time operating system, timing sensitive operations are not handled precisely on a Raspberry Pi.
 This can lead to choppy LED animations when running wotabag on a Pi Zero.
 
-Using [chrt](http://man7.org/linux/man-pages/man1/chrt.1.html) to give the process a higher priority seems to give "good enough" real-world results when using a Pi Zero, but your mileage may vary.
+Using chrt_ to give the process a higher priority seems to give "good enough" real-world results when using a Pi Zero, but your mileage may vary.
 The easiest alternative to get smooth playback is to just use a full-featured Pi, but for a portable solution, I would still recommend using a Pi Zero in your actual bag.
+
+.. _chrt: http://man7.org/linux/man-pages/man1/chrt.1.html
 
 License
 -------
 
-GNU GENERAL PUBLIC LICENSE
-                      Version 3, 29 June 2007
+::
 
-    wotabag
-    Copyright (C) 2019, Peter Rowlands
+    GNU GENERAL PUBLIC LICENSE
+                          Version 3, 29 June 2007
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+        wotabag
+        Copyright (C) 2019, Peter Rowlands
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+        This program is free software: you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation, either version 3 of the License, or
+        (at your option) any later version.
 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
 
-Also add information on how to contact you by electronic and paper mail.
+        You should have received a copy of the GNU General Public License
+        along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-  You should also get your employer (if you work as a programmer) or school,
-if any, to sign a "copyright disclaimer" for the program, if necessary.
-For more information on this, and how to apply and follow the GNU GPL, see
-<http://www.gnu.org/licenses/>.
+    Also add information on how to contact you by electronic and paper mail.
 
-  The GNU General Public License does not permit incorporating your program
-into proprietary programs.  If your program is a subroutine library, you
-may consider it more useful to permit linking proprietary applications with
-the library.  If this is what you want to do, use the GNU Lesser General
-Public License instead of this License.  But first, please read
-<http://www.gnu.org/philosophy/why-not-lgpl.html>.
+      You should also get your employer (if you work as a programmer) or school,
+    if any, to sign a "copyright disclaimer" for the program, if necessary.
+    For more information on this, and how to apply and follow the GNU GPL, see
+    <http://www.gnu.org/licenses/>.
+
+      The GNU General Public License does not permit incorporating your program
+    into proprietary programs.  If your program is a subroutine library, you
+    may consider it more useful to permit linking proprietary applications with
+    the library.  If this is what you want to do, use the GNU Lesser General
+    Public License instead of this License.  But first, please read
+    <http://www.gnu.org/philosophy/why-not-lgpl.html>.
 
 Credits
 -------

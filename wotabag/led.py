@@ -324,16 +324,22 @@ class BaseWota(object):
                     color = self.rainbow[y]
                 else:
                     color = self.colors[0]
+                    if isinstance(color, tuple):
+                        color = color[y % len(color)]
             elif x == 1 and center:
                 if self.rainbow:
                     color = self.rainbow[y]
                 else:
                     color = self.colors[1]
+                    if isinstance(color, tuple):
+                        color = color[y % len(color)]
             elif x == 2 and right:
                 if self.rainbow:
                     color = self.rainbow[y]
                 else:
                     color = self.colors[2]
+                    if isinstance(color, tuple):
+                        color = color[y % len(color)]
             else:
                 color = BladeColor.NONE
             self.strip.setPixelColor(i + q, color.value)
@@ -379,6 +385,8 @@ class WotaNormal(BaseWota):
                     if y < 5:
                         if self.rainbow:
                             color = self.rainbow[y]
+                        elif isinstance(color, tuple):
+                            color = color[y % len(color)]
                         self.strip.setPixelColor(pixel_index(x, y), color.value)
                     else:
                         self.strip.setPixelColor(pixel_index(x, y), BladeColor.NONE.value)
@@ -407,6 +415,8 @@ class WotaNormal(BaseWota):
                 for x, color in enumerate(self.colors):
                     if self.rainbow:
                         color = self.rainbow[y]
+                    elif isinstance(color, tuple):
+                        color = color[y % len(color)]
                     self.strip.setPixelColor(pixel_index(x, y), color.value)
                 self.strip.show()
                 if y < 1:
@@ -416,6 +426,8 @@ class WotaNormal(BaseWota):
                 for x, color in enumerate(self.colors):
                     if self.rainbow:
                         color = self.rainbow[y]
+                    elif isinstance(color, tuple):
+                        color = color[y % len(color)]
                     self.strip.setPixelColor(pixel_index(x, y), color.value)
                 self.strip.show()
                 if y < 3:
@@ -425,6 +437,8 @@ class WotaNormal(BaseWota):
                 for x, color in enumerate(self.colors):
                     if self.rainbow:
                         color = self.rainbow[y]
+                    elif isinstance(color, tuple):
+                        color = color[y % len(color)]
                     self.strip.setPixelColor(pixel_index(x, y), color.value)
                 self.strip.show()
                 if y < 7:
@@ -437,6 +451,8 @@ class WotaNormal(BaseWota):
                 for x, color in enumerate(self.colors):
                     if self.rainbow:
                         color = self.rainbow[y]
+                    elif isinstance(color, tuple):
+                        color = color[y % len(color)]
                     self.strip.setPixelColor(pixel_index(x, y), color.value)
             self.strip.show()
         elif count == 11 and loop:
@@ -467,6 +483,8 @@ class WotaNormal(BaseWota):
             for x, color in enumerate(self.colors):
                 if self.rainbow:
                     color = self.rainbow[0]
+                elif isinstance(color, tuple):
+                    color = color[y % len(color)]
                 self.strip.setPixelColor(pixel_index(x, 0), color.value)
             self.strip.show()
         elif count == 15 and loop:
@@ -474,6 +492,8 @@ class WotaNormal(BaseWota):
                 for x, color in enumerate(self.colors):
                     if self.rainbow:
                         color = self.rainbow[0]
+                    elif isinstance(color, tuple):
+                        color = color[y % len(color)]
                     self.strip.setPixelColor(pixel_index(x, y), color.value)
                 self.strip.show()
                 if y < 3:
@@ -662,6 +682,8 @@ class WotaSlow(BaseWota):
             for x, color in enumerate(self.colors):
                 if self.rainbow:
                     color = self.rainbow[0]
+                elif isinstance(color, tuple):
+                    color = color[0]
                 self.strip.setPixelColor(pixel_index(x, 0), color.value)
                 for y in range(1, 9):
                     self.strip.setPixelColor(pixel_index(x, y), BladeColor.NONE.value)
@@ -672,6 +694,8 @@ class WotaSlow(BaseWota):
                 for x, color in enumerate(self.colors):
                     if self.rainbow:
                         color = self.rainbow[y]
+                    elif isinstance(color, tuple):
+                        color = color[y % len(color)]
                     self.strip.setPixelColor(pixel_index(x, y), color.value)
                 self.strip.show()
         elif count == 31:
@@ -706,6 +730,8 @@ class WotaSlow3(BaseWota):
             for x, color in enumerate(self.colors):
                 if self.rainbow:
                     color = self.rainbow[0]
+                elif isinstance(color, tuple):
+                    color = color[0]
                 self.strip.setPixelColor(pixel_index(x, 0), color.value)
                 for y in range(1, 9):
                     self.strip.setPixelColor(pixel_index(x, y), BladeColor.NONE.value)
@@ -716,6 +742,8 @@ class WotaSlow3(BaseWota):
                 for x, color in enumerate(self.colors):
                     if self.rainbow:
                         color = self.rainbow[y]
+                    elif isinstance(color, tuple):
+                        color = color[y % len(color)]
                     self.strip.setPixelColor(pixel_index(x, y), color.value)
                 self.strip.show()
         elif count == 23 and not self.hold:
@@ -747,10 +775,13 @@ class WotaHold(BaseWota):
         count = self._count % len(self)
 
         if count == 0:
-            for x, color in enumerate(self.colors):
+            for x in range(len(self.colors)):
                 for y in range(0, 9):
+                    color = self.colors[x]
                     if self.rainbow:
                         color = self.rainbow[y]
+                    elif isinstance(color, tuple):
+                        color = color[y % len(color)]
                     self.strip.setPixelColor(pixel_index(x, y), color.value)
             self.strip.show()
         elif count == 7 and not self.hold:
@@ -1314,6 +1345,116 @@ class WotaKoiNiOpen(BaseWota):
         self._count += 1
 
 
+class WotaATPSeichou(BaseWota):
+
+    def __init__(self, left=BladeColor.YOSHIKO, center=BladeColor.YOSHIKO, right=BladeColor.YOSHIKO,
+                 *args, **kwargs):
+        """Awaken the Power "Seichou shitta ne" pattern."""
+        super().__init__(beats=6, *args, **kwargs)
+        self.colors = (left, center, right)
+        self._count = 0
+
+    def tick(self, loop=False, **kwargs):
+        """Perform one tick from this pattern."""
+        count = self._count % len(self)
+
+        if count in (0, 40):
+            self.all_off()
+        elif count == 4:
+            # sei
+            for y in range(9):
+                color = self.colors[0]
+                if isinstance(color, tuple):
+                    color = color[y % len(color)]
+                self.strip.setPixelColor(pixel_index(0, y), color.value)
+            self.strip.show()
+        elif count == 12:
+            # cho-
+            for y in range(9):
+                color = self.colors[2]
+                if isinstance(color, tuple):
+                    color = color[y % len(color)]
+                self.strip.setPixelColor(pixel_index(2, y), color.value)
+            self.strip.show()
+        elif count == 20:
+            # shi-
+            for y in range(3):
+                color = self.colors[1]
+                if isinstance(color, tuple):
+                    color = color[y % len(color)]
+                self.strip.setPixelColor(pixel_index(1, y), color.value)
+            self.strip.show()
+        elif count == 24:
+            # -ta
+            for y in range(3, 6):
+                color = self.colors[1]
+                if isinstance(color, tuple):
+                    color = color[y % len(color)]
+                self.strip.setPixelColor(pixel_index(1, y), color.value)
+            self.strip.show()
+        elif count == 28:
+            # ne
+            for y in range(6, 9):
+                color = self.colors[1]
+                if isinstance(color, tuple):
+                    color = color[y % len(color)]
+                self.strip.setPixelColor(pixel_index(1, y), color.value)
+            self.strip.show()
+
+        self._count += 1
+
+
+class WotaATPFighting(BaseWota):
+
+    def __init__(self, left=BladeColor.YOSHIKO, center=BladeColor.YOSHIKO, right=BladeColor.YOSHIKO,
+                 *args, **kwargs):
+        """Awaken the Power "Fighting fighting!" pattern."""
+        super().__init__(beats=4, *args, **kwargs)
+        self.colors = (left, center, right)
+        self._count = 0
+
+    def tick(self, loop=False, **kwargs):
+        """Perform one tick from this pattern."""
+        count = self._count % len(self)
+
+        if count == 0:
+            # figh-
+            for y in range(9):
+                color = self.colors[0]
+                if isinstance(color, tuple):
+                    color = color[y % len(color)]
+                self.strip.setPixelColor(pixel_index(0, y), color.value)
+            self.strip.show()
+        elif count == 6:
+            # -ting
+            for y in range(9):
+                color = self.colors[2]
+                if isinstance(color, tuple):
+                    color = color[y % len(color)]
+                self.strip.setPixelColor(pixel_index(2, y), color.value)
+            self.strip.show()
+        elif count == 12:
+            # figh-
+            for y in range(5):
+                color = self.colors[1]
+                if isinstance(color, tuple):
+                    color = color[y % len(color)]
+                self.strip.setPixelColor(pixel_index(1, y), color.value)
+            self.strip.show()
+        elif count == 20:
+            # -ting
+            for y in range(5, 9):
+                color = self.colors[1]
+                if isinstance(color, tuple):
+                    color = color[y % len(color)]
+                self.strip.setPixelColor(pixel_index(1, y), color.value)
+            self.strip.show()
+        elif count == 31:
+            self.all_off()
+
+        self._count += 1
+
+
 WOTA_TYPE = {
     'slow': WotaSlow,
     'slow3': WotaSlow3,
@@ -1338,6 +1479,8 @@ WOTA_TYPE = {
     'koinifufu': WotaKoiNiFufu,
     'koinitottemo': WotaKoiNiTottemo,
     'koiniopen': WotaKoiNiOpen,
+    'atpseichou': WotaATPSeichou,
+    'atpfighting': WotaATPFighting,
 }
 
 

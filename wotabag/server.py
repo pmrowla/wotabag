@@ -189,9 +189,17 @@ class WotabagManager(object):
                     bpm = pattern['bpm']
                 for k in ['left', 'center', 'right']:
                     if k in pattern:
-                        color = pattern[k].upper()
-                        if color in BladeColor.__members__:
-                            cur_colors[k] = BladeColor[color]
+                        if isinstance(pattern[k], list):
+                            colors = []
+                            for c in pattern[k]:
+                                color = c.upper()
+                                if color in BladeColor.__members__:
+                                    colors.append(BladeColor[color])
+                            cur_colors[k] = tuple(colors)
+                        else:
+                            color = pattern[k].upper()
+                            if color in BladeColor.__members__:
+                                cur_colors[k] = BladeColor[color]
                 kwargs = pattern.get('kwargs', {})
                 kwargs.update(cur_colors)
                 wota = WOTA_TYPE[pattern['type']](bpm=bpm, strip=self.strip, **kwargs)

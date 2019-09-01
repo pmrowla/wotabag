@@ -6,33 +6,26 @@ patterns:
   - type: "slow"
     bpm: 160
     count: 8
-    left: "leah"
-    center: "ruby"
+    left: "ruby"
+    center:
+      - "leah"
+      - "ruby"
     right: "leah"
   # hajimaru toki wa
   - type: "slow"
     count: 8
-    left: "ruby"
-    center: "leah"
-    right: "leah"
   # tsudzuku ki ga shite
   - type: "slow"
     count: 8
-    center: "ruby"
   # doko e
   - type: "slow"
     count: 2
-    center: "leah"
   # doko e
   - type: "slow"
     count: 2
-    center: "ruby"
   # tsugi wa doko e ikou
   - type: "slow"
     count: 2
-    left: "ruby"
-    center: "leah"
-    right: "ruby"
   - type: "slow3"
     kwargs:
       hold: True
@@ -48,4 +41,546 @@ patterns:
   # bpm change
   - type: "normal"
     bpm: 190
+    count: 11
+    center: "leah"
+    right: "sera"
+  # -yeah!
+  - type: "chase"
+    count: 2
+  - type: "normal"
+    count: 3
+  # let's go
+  - type: "flash"
+    count: 2
+
+  # verse 1
+  # kotoba
+  - type: "normal"
+    count: 16
+    center: "sera"
+    right: "leah"
+  # omoi no
+  - type: "normal"
+    count: 16
+    center: "dia"
+  # ganbaru
+  - type: "normal"
+    count: 4
+    left: "sera"
+    center: "ruby"
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+  # zettai
+  - type: "flash"
+    count: 2
+    left: "sera"
+    center: "ruby"
+    right: "leah"
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+  # makenainda
+  - type: "chase"
+    left: "sera"
+  - type: "chase"
+    right: "leah"
+  - type: "chase"
+    center: "ruby"
+    count: 2
+  # issho ni
+  - type: "normal"
+    count: 4
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+  # zettai
+  - type: "flash"
+    count: 2
+    left: "sera"
+    center: "ruby"
+    right: "leah"
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+  # makenainda
+  - type: "chase"
+    left: "sera"
+  - type: "chase"
+    right: "leah"
+  - type: "chase"
+    center: "ruby"
+    count: 2
+  # (deki)-nai nante
+  - type: "normal"
     count: 8
+  # jibun no naka
+  - type: "normal"
+    count: 2
+    left: "ruby"
+    center: "chika"
+    right: "leah"
+  # go
+  - type: "chase"
+    count: 2
+    left: "leah"
+    center: "leah"
+    right: "leah"
+  - type: "hold"
+    count: 2
+    left: "none"
+    center: "none"
+    right: "none"
+  # go
+  - type: "chase"
+    count: 2
+    left: "leah"
+    center: "leah"
+    right: "leah"
+  - type: "hold"
+    count: 3
+    left: "none"
+    center: "none"
+    right: "none"
+  # my power
+  - type: "flash"
+    count: 3
+    left: "leah"
+    center: "leah"
+    right: "leah"
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+  # new power
+  - type: "flash"
+    left: "leah"
+  - type: "flash"
+    left: "none"
+    center: "leah"
+  - type: "flash"
+    center: "none"
+    right: "leah"
+  # yeah
+  - type: "chase"
+    count: 4
+    left: "leah"
+    center: "leah"
+    right: "leah"
+
+  # chorus
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+  # hai hai hai
+  - type: "chase"
+    left: "ruby"
+    center: "none"
+    right: "ruby"
+  - type: "chase"
+    left: "none"
+    center: "leah"
+    right: "none"
+  - type: "chase"
+    left: "ruby"
+    right: "ruby"
+  # shiranai power de
+  - type: "normal"
+    count: 2
+    left: "sera"
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+  # hai hai hai
+  - type: "chase"
+    left: "leah"
+    center: "none"
+    right: "leah"
+  - type: "chase"
+    left: "none"
+    center: "ruby"
+    right: "none"
+  - type: "chase"
+    left: "leah"
+    right: "leah"
+  # kagayaiteru
+  - type: "normal"
+    count: 10
+    left: "sera"
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+  # hai hai hai
+  - type: "chase"
+    left: "leah"
+    center: "none"
+    right: "leah"
+  - type: "chase"
+    left: "none"
+    center: "ruby"
+    right: "none"
+  - type: "chase"
+    left: "leah"
+    right: "leah"
+  # shiranai power de
+  - type: "normal"
+    count: 2
+    left: "sera"
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+  # hai hai hai
+  - type: "chase"
+    left: "ruby"
+    center: "none"
+    right: "ruby"
+  - type: "chase"
+    left: "none"
+    center: "leah"
+    right: "none"
+  - type: "chase"
+    left: "ruby"
+    right: "ruby"
+  # kagayaiteru
+  - type: "normal"
+    count: 28
+    right: "sera"
+  # (doko e ikou) ka
+  - type: "slow3"
+    kwargs:
+      hold: True
+  - type: "hold"
+    count: 5
+    kwargs:
+      hold: True
+
+  # break
+  - type: "hai"
+    count: 20
+
+  # verse 2
+  # namida tte
+  - type: "normal"
+    count: 16
+    left: "leah"
+    center: "ruby"
+    right: "sera"
+  # chotto mae
+  - type: "normal"
+    count: 14
+    left: "ruby"
+    center: "leah"
+  # seichou shita ne
+  - type: "atpseichou"
+    left: "ruby"
+    center:
+      - "leah"
+      - "ruby"
+    right: "leah"
+  # hai
+  - type: "chase"
+    count: 2
+  - type: "hold"
+    count: 2
+    left: "none"
+    center: "none"
+    right: "none"
+  # hai
+  - type: "chase"
+    count: 2
+    left: "ruby"
+    center:
+      - "leah"
+      - "ruby"
+    right: "leah"
+  - type: "hold"
+    count: 2
+    left: "none"
+    center: "none"
+    right: "none"
+  # hai
+  - type: "chase"
+    count: 2
+    left: "ruby"
+    center:
+      - "leah"
+      - "ruby"
+    right: "leah"
+  # fighting fighting
+  - type: "atpfighting"
+  # hai
+  - type: "chase"
+  - type: "hold"
+    count: 1
+    left: "none"
+    center: "none"
+    right: "none"
+  # hai
+  - type: "chase"
+    count: 2
+    left: "ruby"
+    center:
+      - "leah"
+      - "ruby"
+    right: "leah"
+  - type: "hold"
+    count: 2
+    left: "none"
+    center: "none"
+    right: "none"
+  # hai
+  - type: "chase"
+    count: 2
+    left: "ruby"
+    center:
+      - "leah"
+      - "ruby"
+    right: "leah"
+  - type: "hold"
+    count: 2
+    left: "none"
+    center: "none"
+    right: "none"
+  # hai
+  - type: "chase"
+    count: 2
+    left: "ruby"
+    center:
+      - "leah"
+      - "ruby"
+    right: "leah"
+  # fighting
+  - type: "atpfighting"
+  # ganbaru
+  - type: "normal"
+    count: 4
+    left: "sera"
+    center: "ruby"
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+  # zettai
+  - type: "flash"
+    count: 2
+    left: "sera"
+    center: "ruby"
+    right: "leah"
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+  # makenainda
+  - type: "chase"
+    left: "sera"
+  - type: "chase"
+    right: "leah"
+  - type: "chase"
+    center: "ruby"
+    count: 2
+  # issho ni
+  - type: "normal"
+    count: 4
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+  # zettai
+  - type: "flash"
+    count: 2
+    left: "sera"
+    center: "ruby"
+    right: "leah"
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+  # makenainda
+  - type: "chase"
+    left: "sera"
+  - type: "chase"
+    right: "leah"
+  - type: "chase"
+    center: "ruby"
+    count: 2
+  # (deki)-nai nara
+  - type: "normal"
+    count: 8
+  # shippai kara
+  - type: "normal"
+    count: 2
+    left: "ruby"
+    center: "chika"
+    right: "leah"
+  # go
+  - type: "chase"
+    count: 2
+    left: "leah"
+    center: "leah"
+    right: "leah"
+  - type: "hold"
+    count: 2
+    left: "none"
+    center: "none"
+    right: "none"
+  # go
+  - type: "chase"
+    count: 2
+    left: "leah"
+    center: "leah"
+    right: "leah"
+  - type: "hold"
+    count: 3
+    left: "none"
+    center: "none"
+    right: "none"
+  # my power
+  - type: "flash"
+    count: 3
+    left: "leah"
+    center: "leah"
+    right: "leah"
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+  # new power
+  - type: "flash"
+    left: "leah"
+  - type: "flash"
+    left: "none"
+    center: "leah"
+  - type: "flash"
+    center: "none"
+    right: "leah"
+  # fighting fighting
+  - type: "atpfighting"
+    left: "leah"
+    center: "leah"
+    right: "leah"
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+  # new power
+  - type: "flash"
+    left: "leah"
+  - type: "flash"
+    left: "none"
+    center: "leah"
+  - type: "flash"
+    center: "none"
+    right: "leah"
+  # yeah
+  - type: "chase"
+    count: 4
+    left: "leah"
+    center: "leah"
+    right: "leah"
+
+  # chorus 2
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+  # hai hai hai
+  - type: "chase"
+    left: "ruby"
+    center: "none"
+    right: "ruby"
+  - type: "chase"
+    left: "none"
+    center: "leah"
+    right: "none"
+  - type: "chase"
+    left: "ruby"
+    right: "ruby"
+  # shiranai power de
+  - type: "normal"
+    count: 2
+    left: "sera"
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+  # hai hai hai
+  - type: "chase"
+    left: "leah"
+    center: "none"
+    right: "leah"
+  - type: "chase"
+    left: "none"
+    center: "ruby"
+    right: "none"
+  - type: "chase"
+    left: "leah"
+    right: "leah"
+  # kagayaiteru
+  - type: "normal"
+    count: 10
+    left: "sera"
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+  # hai hai hai
+  - type: "chase"
+    left: "leah"
+    center: "none"
+    right: "leah"
+  - type: "chase"
+    left: "none"
+    center: "ruby"
+    right: "none"
+  - type: "chase"
+    left: "leah"
+    right: "leah"
+  # shiranai power de
+  - type: "normal"
+    count: 2
+    left: "sera"
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+  # hai hai hai
+  - type: "chase"
+    left: "ruby"
+    center: "none"
+    right: "ruby"
+  - type: "chase"
+    left: "none"
+    center: "leah"
+    right: "none"
+  - type: "chase"
+    left: "ruby"
+    right: "ruby"
+  # kagayaiteru
+  - type: "normal"
+    count: 28
+    right: "sera"
+  # (doko e ikou) ka
+  - type: "slow3"
+    bpm: 179
+    kwargs:
+      hold: True
+  - type: "hold"
+    count: 5
+    kwargs:
+      hold: True
+
+  # outtro
+  - type: "slow"
+    bpm: 120
+    count: 17
+  - type: "slow3"
+    kwargs:
+      hold: True

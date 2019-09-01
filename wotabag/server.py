@@ -87,14 +87,7 @@ class WotabagManager(object):
         self.strip.begin()
 
         # init playback
-        # NOTE: mpv player is started and destroyed as workaround to force
-        #   initialization of rpi USB audio device.
-        #   If the audio device is not initialized here, it will be initialized
-        #   the first time it is used during audio playback, which ends up
-        #   causing desync between the led's and audio.
-        self.player = MPV(vid='no')
-        self.player.terminate()
-        self.player = None
+        self.player = MPV(vid='no', hwdec='mmal', keep_open='yes', volume=volume)
         self.song = None
         self._stopped = Event()
         self._stopped.set()
@@ -134,7 +127,6 @@ class WotabagManager(object):
         self.status = WotabagStatus.PLAYING
         self._status_lock.release()
 
-        self.player = MPV(vid='no')
         self.player.volume = self.volume
         self._playback_thread = Thread(target=self._wota_playback)
         print('starting wota playback thread')
@@ -146,8 +138,7 @@ class WotabagManager(object):
             self._playback_thread.join()
             self._playback_thread = None
         if self.player:
-            self.player.terminate()
-            self.player = None
+            self.player.command('stop')
         self.song = None
 
         for i in range(self.strip.numPixels()):

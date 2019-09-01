@@ -49,6 +49,25 @@ This will place the server daemon into pip's default script install path.
 
 See ``examples/`` for an example configuration file and example song files.
 
+Pi Model Caveats
+----------------
+
+Raspberry Pi 4
+~~~~~~~~~~~~~~
+
+The default BLE MTU used in wotabag is 48 bytes, as this is the largest value that worked in testing with a Pi Zero W.
+However, the maximum allowed BLE MTU size by an iOS device is 185 bytes, and in testing a Raspberry Pi Model 4 did support using 185 bytes.
+If you are running wotabag on a Pi 4, adjusting the value of `MTU_SIZE` in `wotabag/sdp.py` (and the corresponding value in `Constants.swift` for wotabag-remote) to 185 may give you a slight performance increase.
+
+Raspberry Pi Zero (W)
+~~~~~~~~~~~~~~~~~~~~~
+
+Since this is written in Python, it is not particularly efficient, and since Linux is not a real-time operating system, timing sensitive operations are not handled precisely on a Raspberry Pi.
+This can lead to choppy LED animations when running wotabag on a Pi Zero.
+
+Using [chrt](http://man7.org/linux/man-pages/man1/chrt.1.html) to give the process a higher priority seems to give "good enough" real-world results when using a Pi Zero, but your mileage may vary.
+The easiest alternative to get smooth playback is to just use a full-featured Pi, but for a portable solution, I would still recommend using a Pi Zero in your actual bag.
+
 License
 -------
 

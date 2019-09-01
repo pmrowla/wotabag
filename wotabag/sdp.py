@@ -10,8 +10,10 @@ from queue import Queue
 from tinyrpc.transports import ServerTransport
 
 
-# IOS_MTU_SIZE = 185
-IOS_MTU_SIZE = 48
+# The max MTU size for an iOS device is 185 bytes, but in testing
+# the max value allowed here by a Pi Zero W is 48 bytes
+# MTU_SIZE = 185
+MTU_SIZE = 48
 
 
 class DatagramHeader(object):
@@ -57,7 +59,7 @@ class Datagram(object):
 
 class DatagramView(object):
 
-    def __init__(self, message, datagram_max_size=IOS_MTU_SIZE):
+    def __init__(self, message, datagram_max_size=MTU_SIZE):
         self.message = message
         self.datagram_max_size = datagram_max_size
         self.payload_max_size = datagram_max_size - 2
@@ -72,7 +74,7 @@ class Message(object):
     def __hash__(self):
         return hash((self.key, self.data))
 
-    def datagrams(self, datagram_max_size=IOS_MTU_SIZE):
+    def datagrams(self, datagram_max_size=MTU_SIZE):
         assert(datagram_max_size > DatagramHeader.BYTE_COUNT)
         payload_max_size = datagram_max_size - DatagramHeader.BYTE_COUNT
         datagram_count = int(math.ceil(len(self.data) / payload_max_size))

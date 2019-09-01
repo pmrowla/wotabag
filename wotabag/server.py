@@ -224,9 +224,16 @@ class WotabagManager(object):
                         #     drift = diff
                         ticks += 1
 
+            with self.player._playback_cond:
+                # wait for mpv to reach the end of the audio file or 5 seconds,
+                # whichever comes first
+                self.player._playback_cond.wait(5)
+
             # end of song, setup next track
+            for i in range(self.strip.numPixels()):
+                self.strip.setPixelColor(i, BladeColor.NONE.value)
+            self.strip.show()
             self.current_track += 1
-            time.sleep(5)
 
         self.current_track = 0
         self._status_lock.acquire()

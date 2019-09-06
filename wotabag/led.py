@@ -1023,7 +1023,7 @@ class WotaSpin(BaseWota):
                         n = count
                     else:
                         n = 8 - count
-                if y == n:
+                if y in (n, (n + 4) % 9):
                     self.strip.setPixelColor(pixel_index(x, y), color.value)
                 else:
                     self.strip.setPixelColor(pixel_index(x, y), BladeColor.NONE.value)
@@ -1455,6 +1455,56 @@ class WotaATPFighting(BaseWota):
         self._count += 1
 
 
+class WotaYumeFufu(BaseWota):
+
+    def __init__(self, left=BladeColor.YOSHIKO, center=BladeColor.YOSHIKO, right=BladeColor.YOSHIKO, *args, **kwargs):
+        """Yume Kataru chorus "fufu"."""
+        super().__init__(beats=2, *args, **kwargs)
+        self.colors = (left, center, right)
+        self._count = 0
+
+    def tick(self, loop=False, **kwargs):
+        """Perform one tick from this pattern."""
+        count = self._count % len(self)
+
+        if count in (0, 7, 15):
+            self.all_off()
+        elif count in (4, 8):
+            for x, color in enumerate(self.colors):
+                for y in range(0, 9):
+                    self.strip.setPixelColor(pixel_index(x, y), color.value)
+            self.strip.show()
+
+        self._count += 1
+
+
+class WotaYumeFufufu(BaseWota):
+
+    def __init__(self, left=BladeColor.YOSHIKO, center=BladeColor.YOSHIKO, right=BladeColor.YOSHIKO, *args, **kwargs):
+        """Yume Kataru break (L-R-L) "-fu|-fu|-fu|--|--|".
+
+        Starts on beat 4.
+        """
+        super().__init__(beats=5, *args, **kwargs)
+        self.colors = (left, center, right)
+        self._count = 0
+
+    def tick(self, loop=False, **kwargs):
+        """Perform one tick from this pattern."""
+        count = self._count % len(self)
+
+        if count in (0, 39):
+            self.all_off()
+        elif count >= 4 and count < 12:
+            self.light_chase(center=False, right=False)
+        elif count >= 12 and count < 20:
+            self.light_chase(left=False, center=False)
+        elif count >= 20:
+            self.light_chase(center=False, right=False)
+
+        self._count += 1
+
+
 WOTA_TYPE = {
     'slow': WotaSlow,
     'slow3': WotaSlow3,
@@ -1481,6 +1531,8 @@ WOTA_TYPE = {
     'koiniopen': WotaKoiNiOpen,
     'atpseichou': WotaATPSeichou,
     'atpfighting': WotaATPFighting,
+    'yumefufu': WotaYumeFufu,
+    'yumefufufu': WotaYumeFufufu,
 }
 
 

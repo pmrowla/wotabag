@@ -3,11 +3,15 @@
 """Python implemenation of Simple Datagram Protocol (SDP) based RPC server."""
 
 import itertools
+import logging
 import math
 import struct
 from queue import Queue
 
 from tinyrpc.transports import ServerTransport
+
+
+logger = logging.getLogger('wotabag')
 
 
 # The max MTU size for an iOS device is 185 bytes, but in testing
@@ -122,9 +126,9 @@ class SDPServerTransport(ServerTransport):
         return msg
 
     def send_reply(self, context, reply):
-        print('Sending RPC response: {}'.format(reply.decode('utf-8')))
+        logger.debug('Sending RPC response: {}'.format(reply.decode('utf-8')))
         if not self.reply_callback:
-            print('Reply callback is not set, cannot send RPC response.')
+            logger.debug('Reply callback is not set, cannot send RPC response.')
             return
         key = next(self._key_iter)
         response = Message(key, reply)
@@ -134,7 +138,7 @@ class SDPServerTransport(ServerTransport):
 
     def handle_message(self, data):
         """Handle an assembled SDP message."""
-        print('Got RPC request: "{}"'.format(data.decode('utf-8')))
+        logger.debug('Got RPC request: "{}"'.format(data.decode('utf-8')))
         self.messages.put((None, data))
 
     def process(self, data):

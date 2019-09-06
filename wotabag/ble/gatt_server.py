@@ -12,18 +12,18 @@ import dbus
 import dbus.exceptions
 import dbus.mainloop.glib
 import dbus.service
+import logging
 
 import array
 
 import functools
 
-try:
-    from gi.repository import GObject
-except ImportError:
-    import gobject as GObject
-
 from . import exceptions
 from . import adapters
+
+
+logger = logging.getLogger('wotabag')
+
 
 BLUEZ_SERVICE_NAME = 'org.bluez'
 LE_ADVERTISING_MANAGER_IFACE = 'org.bluez.LEAdvertisingManager1'
@@ -58,7 +58,7 @@ class WotabagApplication(dbus.service.Object):
     @dbus.service.method(DBUS_OM_IFACE, out_signature='a{oa{sa{sv}}}')
     def GetManagedObjects(self):
         response = {}
-        print('GetManagedObjects')
+        logger.debug('GetManagedObjects')
 
         for service in self.services:
             response[service.get_path()] = service.get_properties()
@@ -175,22 +175,22 @@ class Characteristic(dbus.service.Object):
                          in_signature='a{sv}',
                          out_signature='ay')
     def ReadValue(self, options):
-        print('Default ReadValue called, returning error')
+        logger.error('Default ReadValue called, returning error')
         raise exceptions.NotSupportedException()
 
     @dbus.service.method(GATT_CHRC_IFACE, in_signature='aya{sv}')
     def WriteValue(self, value, options):
-        print('Default WriteValue called, returning error')
+        logger.error('Default WriteValue called, returning error')
         raise exceptions.NotSupportedException()
 
     @dbus.service.method(GATT_CHRC_IFACE)
     def StartNotify(self):
-        print('Default StartNotify called, returning error')
+        logger.error('Default StartNotify called, returning error')
         raise exceptions.NotSupportedException()
 
     @dbus.service.method(GATT_CHRC_IFACE)
     def StopNotify(self):
-        print('Default StopNotify called, returning error')
+        logger.error('Default StopNotify called, returning error')
         raise exceptions.NotSupportedException()
 
     @dbus.service.signal(DBUS_PROP_IFACE,
@@ -236,12 +236,12 @@ class Descriptor(dbus.service.Object):
                          in_signature='a{sv}',
                          out_signature='ay')
     def ReadValue(self, options):
-        print('Default ReadValue called, returning error')
+        logger.error('Default ReadValue called, returning error')
         raise exceptions.NotSupportedException()
 
     @dbus.service.method(GATT_DESC_IFACE, in_signature='aya{sv}')
     def WriteValue(self, value, options):
-        print('Default WriteValue called, returning error')
+        logger.error('Default WriteValue called, returning error')
         raise exceptions.NotSupportedException()
 
 
@@ -320,11 +320,11 @@ class WotabagRPCUserDescriptionDescriptor(Descriptor):
 
 
 def register_app_cb():
-    print('GATT application registered')
+    logger.info('GATT application registered')
 
 
 def register_app_error_cb(mainloop, error):
-    print('Failed to register application: ' + str(error))
+    logger.error('Failed to register application: ' + str(error))
     mainloop.quit()
 
 
@@ -339,7 +339,7 @@ def gatt_server_main(mainloop, bus, adapter_name, rpc_transport):
 
     app = WotabagApplication(bus, rpc_transport)
 
-    print('Registering GATT application...')
+    logger.info('Registering GATT application...')
 
     service_manager.RegisterApplication(app.get_path(), {},
                                         reply_handler=register_app_cb,

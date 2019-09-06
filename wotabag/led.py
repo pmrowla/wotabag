@@ -8,11 +8,15 @@ Based on rpi-ws281x-python strandtest.py.
 
 """
 
+import logging
 import time
 from collections import OrderedDict
 from enum import Enum
 
 from rpi_ws281x import PixelStrip, Color
+
+
+logger = logging.getLogger('wotabag')
 
 
 # LED strip configuration:
@@ -1542,9 +1546,9 @@ def init_strip():
 
 def test_wipe(strip, clear=False):
     try:
-        print('Test color wipe animations.')
+        logger.info('Test color wipe animations.')
         for color in BladeColor:
-            print(color)
+            logger.debug(color)
             color_wipe(strip, color.value)
         if clear:
             color_wipe(strip, Color(0, 0, 0), 10)

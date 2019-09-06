@@ -1,15 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from __future__ import print_function
+
 import dbus
 import dbus.exceptions
 import dbus.mainloop.glib
 import dbus.service
 import functools
+import logging
 
 from . import exceptions
 from . import adapters
 from .gatt_server import WotabagService
+
+
+logger = logging.getLogger('wotabag')
 
 
 BLUEZ_SERVICE_NAME = 'org.bluez'
@@ -80,17 +85,17 @@ class Advertisement(dbus.service.Object):
                          in_signature='s',
                          out_signature='a{sv}')
     def GetAll(self, interface):
-        print('GetAll')
+        logger.debug('GetAll')
         if interface != LE_ADVERTISEMENT_IFACE:
             raise exceptions.InvalidArgsException()
-        print('returning props')
+        logger.debug('returning props')
         return self.get_properties()[LE_ADVERTISEMENT_IFACE]
 
     @dbus.service.method(LE_ADVERTISEMENT_IFACE,
                          in_signature='',
                          out_signature='')
     def Release(self):
-        print('%s: Released!' % self.path)
+        logger.debug('{}: Released!'.format(self.path))
 
 
 class WotabagAdvertisement(Advertisement):
@@ -118,17 +123,17 @@ class WotabagAdvertisement(Advertisement):
 
 
 def register_ad_cb():
-    print('Advertisement registered')
+    logger.info('Advertisement registered')
 
 
 def register_ad_error_cb(mainloop, error):
-    print('Failed to register advertisement: ' + str(error))
+    logger.error('Failed to register advertisement: ' + str(error))
     mainloop.quit()
 
 
 def advertising_main(mainloop, bus, adapter_name):
     adapter = adapters.find_adapter(bus, LE_ADVERTISING_MANAGER_IFACE, adapter_name)
-    print('adapter: %s' % (adapter,))
+    logger.info('adapter: %s' % (adapter,))
     if not adapter:
         raise Exception('LEAdvertisingManager1 interface not found')
 

@@ -7,6 +7,9 @@ Manages playback via JSON-RPC.
 """
 
 import enum
+import logging
+import logging.config
+import logging.handlers
 import subprocess
 import time
 from io import IOBase
@@ -69,6 +72,10 @@ class WotabagManager(object):
         else:
             with open(config_file) as f:
                 config = yaml.load(f)
+
+        logging.config.dictConfig(config.get('logging', {}))
+        self.logger = logging.getLogger('wotabag')
+
         self.rpc_host = config.get('rpc_host', '127.0.0.1')
         self.rpc_port = config.get('rpc_port', 60715)
         self._load_playlist(config.get('playlist', []))
@@ -87,7 +94,7 @@ class WotabagManager(object):
         self.strip.begin()
 
         # init playback
-        self.player = MPV(vid='no', hwdec='mmal', keep_open='yes', volume=volume)
+        self.player = MPV(vid='no', hwdec='mmal', keep_open='yes', volume=volume, log_handler=self._mpv_log)
         self.song = None
         self._stopped = Event()
         self._stopped.set()
@@ -104,11 +111,24 @@ class WotabagManager(object):
             if self.player:
                 self.player.terminate()
 
+    def _mpv_log(self, loglevel, component, message):
+        f = {
+            'fatal': self.logger.critical,
+            'error': self.logger.error,
+            'warn': self.logger.warning,
+            'info': self.logger.info,
+            'verbose': self.logger.debug,
+            'debug': self.logger.debug,
+            'trace': self.logger.debug,
+        }
+        if loglevel in f:
+            f[loglevel]('[MPV] {}: {}'.format(component, message))
+
     def _load_file(self, yaml_file):
         yaml = YAML(typ='safe')
         with open(yaml_file) as f:
             song = yaml.load(f)
-        print('loaded {} ({})'.format(song['title'], song['filename']))
+        self.logger.debug('loaded {} ({})'.format(song['title'], song['filename']))
         self.song = song
 
     def _load_playlist(self, playlist):
@@ -129,7 +149,7 @@ class WotabagManager(object):
 
         self.player.volume = self.volume
         self._playback_thread = Thread(target=self._wota_playback)
-        print('starting wota playback thread')
+        self.logger.debug('starting wota playback thread')
         self._playback_thread.start()
 
     def _stop(self):
@@ -137,6 +157,7 @@ class WotabagManager(object):
         if self._playback_thread:
             self._playback_thread.join()
             self._playback_thread = None
+            self.logger.debug('joined wota playback thread')
         if self.player:
             self.player.command('stop')
         self.song = None
@@ -154,7 +175,6 @@ class WotabagManager(object):
             song, _ = self.playlist[self.current_track]
             self._load_file(song)
 
-            print('[mpv] playing: {}'.format(self.song['filename']))
             self.player.play(self.song['filename'])
 
             # wait for mpv to actually start playing
@@ -243,11 +263,13 @@ class WotabagManager(object):
     @public
     def get_playlist(self):
         """Return this wotabag's playlist."""
+        self.logger.info('[RPC] wotabag.get_playlist')
         return [title for _, title in self.playlist]
 
     @public
     def get_status(self):
         """Return current status."""
+        self.logger.info('[RPC] wotabag.get_status')
         result = {
             'status': self.status.name,
             'volume': self.volume,
@@ -272,11 +294,13 @@ class WotabagManager(object):
     @public
     def get_volume(self):
         """Return current volume."""
+        self.logger.info('[RPC] wotabag.get_volume')
         return self.volume
 
     @public
     def set_volume(self, volume):
         """Set volume."""
+        self.logger.info('[RPC] wotabag.set_volume {}'.format(volume))
         volume = int(volume)
         if volume > 100:
             volume = 100
@@ -290,6 +314,7 @@ class WotabagManager(object):
     @public
     def get_colors(self):
         """Return list of available colors."""
+        self.logger.info('[RPC] wotabag.get_colors')
         colors = ['None'] + \
             [x.name.capitalize() for x in aqours] + list(aqours_units.keys()) + ['Aqours Rainbow'] + \
             [x.name.capitalize() for x in saint_snow] + ['Saint Snow'] + \
@@ -299,6 +324,7 @@ class WotabagManager(object):
     @public
     def set_color(self, color):
         """Set all LEDs to the specified color or color sequence."""
+        self.logger.info('[RPC] wotabag.set_color {}'.format(color))
         if color == 'Aqours Rainbow':
             colors = aqours_rainbow
         elif color in aqours_units:
@@ -340,6 +366,7 @@ class WotabagManager(object):
             (this will appear as a returned None to a tinyrpc client).
 
         """
+        self.logger.info('[RPC] wotabag.power_off')
         # clear led's before power off otherwise they will stay turned on until
         # the separate led battery source is manually switched off
         for i in range(self.strip.numPixels()):
@@ -351,11 +378,13 @@ class WotabagManager(object):
     @public
     def play(self):
         """Start playback of the next song."""
+        self.logger.info('[RPC] wotabag.play')
         self._play()
 
     @public
     def play_index(self, index):
         """Start playback of the specified song."""
+        self.logger.info('[RPC] wotabag.play_index {}'.format(index))
         if index >= len(self.playlist) or index < 0:
             raise BadRequestError('Invalid song index')
         self.current_track = index
@@ -364,11 +393,13 @@ class WotabagManager(object):
     @public
     def stop(self):
         """Stop playback."""
+        self.logger.info('[RPC] wotabag.stop')
         self._stop()
 
     @public
     def test_pattern(self):
         """Display test color wipe patterns."""
+        self.logger.info('[RPC] wotabag.test_pattern')
         gevent.spawn_later(0, test_wipe, self.strip, clear=True)
 
 
@@ -395,6 +426,7 @@ def gevent_main(wotabag, dispatcher, sdp_transport):
     Needed so that it does not conflict with dbus/glib event loop.
 
     """
+    logger = logging.getLogger('wotabag')
     ble_rpc_server = WotabagRPCServerGreenlets(
         sdp_transport,
         JSONRPCProtocol(),
@@ -413,14 +445,17 @@ def gevent_main(wotabag, dispatcher, sdp_transport):
 
     try:
         greenlets = []
-        print("Running RPC server at {}:{}".format(wotabag.rpc_host, wotabag.rpc_port))
+        logger.info("Running RPC server at {}:{}".format(wotabag.rpc_host, wotabag.rpc_port))
         greenlets.append(wsgi_rpc_server.start())
         greenlets.append(ble_rpc_server.start())
         gevent.sleep(0)
         server_done.wait()
+    except Exception as e:
+        logger.exception(e)
+        raise e
     finally:
         gevent.joinall(greenlets)
-        print("RPC server finished")
+        logger.info("RPC server finished")
 
 
 def main():
@@ -438,6 +473,8 @@ def main():
     mainloop = GObject.MainLoop()
 
     with WotabagManager(args.config_file) as wotabag:
+        logger = logging.getLogger('wotabag')
+
         # Register RPC endpoints
         dispatcher = RPCDispatcher()
         dispatcher.register_instance(wotabag, 'wotabag.')
@@ -454,14 +491,16 @@ def main():
             gevent_thread.start()
 
             # Run GATT server
-            print("Running BLE server")
+            logger.info("Running BLE server")
             mainloop.run()
         except KeyboardInterrupt:
-            print("Done, cleaning up...")
+            logger.info("Done, cleaning up...")
+        except Exception as e:
+            logger.exception(e)
         finally:
             server_done.set()
             mainloop.quit()
-            print("BLE server finished")
+            logger.info("BLE server finished")
             gevent_thread.join()
 
 

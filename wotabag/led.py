@@ -1548,6 +1548,66 @@ class WotaJimoAi(BaseWota):
         self._count += 1
 
 
+class WotaHajimariYamenai(BaseWota):
+
+    def __init__(self, left=BladeColor.YOSHIKO, center=BladeColor.YOSHIKO, right=BladeColor.YOSHIKO, *args, **kwargs):
+        """Hajimari Road "-ya|-me|nai-|yo-|..." pattern."""
+        super().__init__(beats=4, *args, **kwargs)
+        self.colors = (left, center, right)
+        self._count = 0
+
+    def tick(self, loop=False, **kwargs):
+        """Perform one tick from this pattern."""
+        count = self._count % len(self)
+
+        if count == 0:
+            self.all_off()
+        elif count == 4:
+            for x, color in enumerate(self.colors):
+                for y in range(3):
+                    self.strip.setPixelColor(pixel_index(x, y), color.value)
+                for y in range(3, 9):
+                    self.strip.setPixelColor(pixel_index(x, y), BladeColor.NONE.value)
+            self.strip.show()
+        elif count == 12:
+            for x, color in enumerate(self.colors):
+                for y in range(3, 6):
+                    self.strip.setPixelColor(pixel_index(x, y), color.value)
+            self.strip.show()
+        elif count == 16:
+            for x, color in enumerate(self.colors):
+                for y in range(6, 9):
+                    self.strip.setPixelColor(pixel_index(x, y), color.value)
+            self.strip.show()
+        elif count >= 24:
+            self.light_chase()
+
+        self._count += 1
+
+
+class WotaHajimariGoEast(BaseWota):
+
+    def __init__(self, left=BladeColor.YOSHIKO, center=BladeColor.YOSHIKO, right=BladeColor.YOSHIKO, *args, **kwargs):
+        """Hajimari Road "go-|-east|--|go-|..." pattern."""
+        super().__init__(beats=4, *args, **kwargs)
+        self.colors = (left, center, right)
+        self._count = 0
+
+    def tick(self, loop=False, **kwargs):
+        """Perform one tick from this pattern."""
+        count = self._count % len(self)
+
+        if count in (0, 12, 24):
+            for x, color in enumerate(self.colors):
+                for y in range(9):
+                    self.strip.setPixelColor(pixel_index(x, y), color.value)
+            self.strip.show()
+        elif count in (8, 20):
+            self.all_off()
+
+        self._count += 1
+
+
 WOTA_TYPE = {
     'slow': WotaSlow,
     'slow3': WotaSlow3,
@@ -1577,6 +1637,8 @@ WOTA_TYPE = {
     'yumefufu': WotaYumeFufu,
     'yumefufufu': WotaYumeFufufu,
     'jimoai': WotaJimoAi,
+    'hajimariyamenai': WotaHajimariYamenai,
+    'hajimarigoeast': WotaHajimariGoEast,
 }
 
 

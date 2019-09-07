@@ -1,0 +1,598 @@
+title: "Hajimari Road"
+filename: "/home/pi/wotabag/mp3/hajimari_road.mp3"
+initial_offset: 460
+patterns:
+  # intro
+  # hajimari to owari no
+  - type: "slow"
+    bpm: 155
+    count: 5
+    left: "hanamaru"
+    center: "yoshiko"
+    right: "ruby"
+  - type: "slow3"
+    kwargs:
+      hold: True
+  - type: "hold"
+    count: 5
+    kwargs:
+      hold: True
+  # ii na ii na
+  - type: "normal"
+    bpm: 191
+    count: 4
+  - type: "hai"
+    count: 16
+  - type: "slow3"
+    kwargs:
+      hold: True
+  - type: "hold"
+    count: 5
+    kwargs:
+      hold: True
+
+  # verse 1
+  # monotarinai
+  - type: "normal"
+    count: 4
+  - type: "normal"
+    count: 4
+    left: "yoshiko"
+    center: "hanamaru"
+    right: "ruby"
+  - type: "normal"
+    count: 8
+    left: "yoshiko"
+    center: "ruby"
+    right: "hanamaru"
+  # fuwatto
+  - type: "normal"
+    count: 16
+    left: "ruby"
+    center: "yoshiko"
+    right: "hanamaru"
+  # nani ga shitai
+  - type: "slow"
+    count: 4
+    left: "yoshiko"
+    center: "ruby"
+    right: "hanamaru"
+  - type: "normal"
+    count: 4
+  # harahara
+  - type: "normal"
+    left: "none"
+    center: "yoshiko"
+    right: "none"
+  - type: "normalodd"
+  - type: "chase"
+    left: "ruby"
+    center: "none"
+    right: "hanamaru"
+  # munemune
+  - type: "normal"
+    left: "none"
+    center: "hanamaru"
+    right: "none"
+  - type: "normalodd"
+  - type: "chase"
+    left: "ruby"
+    center: "none"
+    right: "yoshiko"
+  # bakubaku
+  - type: "normal"
+    left: "none"
+    center: "ruby"
+    right: "none"
+  - type: "normalodd"
+  - type: "chase"
+    left: "hanamaru"
+    center: "none"
+    right: "yoshiko"
+  # ippozutsu
+  - type: "normal"
+    count: 4
+    left: "hanamaru"
+    center: "yoshiko"
+    right: "ruby"
+
+  # chorus 1
+  # doko kara
+  - type: "normal"
+    count: 2
+  # sunshine my road
+  - type: "flash"
+    left: "hanamaru"
+    center: "none"
+    right: "none"
+  - type: "flash"
+    left: "none"
+    center: "yoshiko"
+  - type: "flash"
+    center: "none"
+    right: "ruby"
+  - type: "chase"
+    left: "hanamaru"
+    center: "yoshiko"
+    right: "ruby"
+  # omoide saguru
+  - type: "normal"
+    count: 2
+  # sunshine my road
+  - type: "flash"
+    left: "none"
+    center: "none"
+    right: "ruby"
+  - type: "flash"
+    center: "yoshiko"
+    right: "none"
+  - type: "flash"
+    left: "hanamaru"
+    center: "none"
+  - type: "chase"
+    left: "hanamaru"
+    center: "yoshiko"
+    right: "ruby"
+  # ano toki
+  - type: "normal"
+    count: 10
+  # sunshine my road
+  - type: "flash"
+    left: "none"
+    center: "none"
+    right: "ruby"
+  - type: "flash"
+    center: "yoshiko"
+    right: "none"
+  - type: "flash"
+    left: "hanamaru"
+    center: "none"
+  - type: "chase"
+    left: "hanamaru"
+    center: "yoshiko"
+    right: "ruby"
+  # sen nado
+  - type: "normal"
+    count: 2
+  # sunshine my road
+  - type: "flash"
+    left: "hanamaru"
+    center: "none"
+    right: "none"
+  - type: "flash"
+    left: "none"
+    center: "yoshiko"
+  - type: "flash"
+    center: "none"
+    right: "ruby"
+  - type: "chase"
+    left: "hanamaru"
+    center: "yoshiko"
+    right: "ruby"
+  # itsu no ma
+  - type: "normal"
+    count: 5
+  # (daka)-ra
+  - type: "normalodd"
+  # hey
+  - type: "chase"
+  # dakara
+  - type: "normal"
+  - type: "normalodd"
+  # hey
+  - type: "chase"
+  # yamerarenai
+  - type: "normal"
+    count: 2
+  # [yamenai yo]
+  - type: "hajimariyamenai"
+  # kakenuke
+  - type: "normal"
+    count: 4
+  # go east go
+  - type: "hajimarigoeast"
+  # west
+  - type: "slow"
+
+  # break
+  - type: "hai"
+    count: 16
+  - type: "slow3"
+    kwargs:
+      hold: True
+  - type: "hold"
+    count: 5
+    kwargs:
+      hold: True
+
+  # verse 2
+  # tewo tori
+  - type: "normal"
+    count: 16
+    left: "yoshiko"
+    center: "hanamaru"
+    right: "ruby"
+  # demo itai
+  - type: "normal"
+    count: 16
+    left: "yoshiko"
+    center: "ruby"
+    right: "hanamaru"
+  # (deru-) odoroki
+  - type: "slow"
+    count: 4
+    left: "ruby"
+    center: "yoshiko"
+    right: "hanamaru"
+  - type: "normal"
+    count: 4
+  # wakuwaku
+  - type: "normal"
+    left: "none"
+    center: "yoshiko"
+    right: "none"
+  - type: "normalodd"
+  - type: "chase"
+    left: "ruby"
+    center: "none"
+    right: "hanamaru"
+  # munemune
+  - type: "normal"
+    left: "none"
+    center: "hanamaru"
+    right: "none"
+  - type: "normalodd"
+  - type: "chase"
+    left: "ruby"
+    center: "none"
+    right: "yoshiko"
+  # pikapika
+  - type: "normal"
+    left: "none"
+    center: "ruby"
+    right: "none"
+  - type: "normalodd"
+  - type: "chase"
+    left: "hanamaru"
+    center: "none"
+    right: "yoshiko"
+  # mainichi
+  - type: "normal"
+    count: 4
+    left: "hanamaru"
+    center: "yoshiko"
+    right: "ruby"
+
+  # chorus 2
+  # kore kara
+  - type: "normal"
+    count: 2
+  # sunshine my road
+  - type: "flash"
+    left: "hanamaru"
+    center: "none"
+    right: "none"
+  - type: "flash"
+    left: "none"
+    center: "yoshiko"
+  - type: "flash"
+    center: "none"
+    right: "ruby"
+  - type: "chase"
+    left: "hanamaru"
+    center: "yoshiko"
+    right: "ruby"
+  # negai ga
+  - type: "normal"
+    count: 2
+  # sunshine my road
+  - type: "flash"
+    left: "none"
+    center: "none"
+    right: "ruby"
+  - type: "flash"
+    center: "yoshiko"
+    right: "none"
+  - type: "flash"
+    left: "hanamaru"
+    center: "none"
+  - type: "chase"
+    left: "hanamaru"
+    center: "yoshiko"
+    right: "ruby"
+  # sodateyou
+  - type: "normal"
+    count: 10
+  # sunshine my road
+  - type: "flash"
+    left: "none"
+    center: "none"
+    right: "ruby"
+  - type: "flash"
+    center: "yoshiko"
+    right: "none"
+  - type: "flash"
+    left: "hanamaru"
+    center: "none"
+  - type: "chase"
+    left: "hanamaru"
+    center: "yoshiko"
+    right: "ruby"
+  # kururi to
+  - type: "normal"
+    count: 2
+  # sunshine my road
+  - type: "flash"
+    left: "hanamaru"
+    center: "none"
+    right: "none"
+  - type: "flash"
+    left: "none"
+    center: "yoshiko"
+  - type: "flash"
+    center: "none"
+    right: "ruby"
+  - type: "chase"
+    left: "hanamaru"
+    center: "yoshiko"
+    right: "ruby"
+  # nando datte
+  - type: "normal"
+    count: 5
+  # (da)-tte
+  - type: "normalodd"
+  # hey
+  - type: "chase"
+  # datte
+  - type: "normal"
+  - type: "normalodd"
+  # hey
+  - type: "chase"
+  # yametakunai
+  - type: "normal"
+    count: 2
+  # [yamenai de]
+  - type: "hajimariyamenai"
+  # omoshirogari
+  - type: "normal"
+    count: 4
+  # go north go
+  - type: "hajimarigoeast"
+  # south
+  - type: "slow"
+
+  # bridge
+  - type: "slow"
+    count: 8
+
+  # break
+  - type: "normal"
+    count: 16
+  # hajimari road
+  - type: "flash"
+    count: 3
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+  - type: "flash"
+    count: 3
+    left: "hanamaru"
+    center: "yoshiko"
+    right: "ruby"
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+  - type: "flash"
+    count: 3
+    left: "hanamaru"
+    center: "yoshiko"
+    right: "ruby"
+  - type: "hold"
+    left: "none"
+    center: "none"
+    right: "none"
+  # yeah
+  - type: "chase"
+    count: 4
+    left: "hanamaru"
+    center: "yoshiko"
+    right: "ruby"
+
+  # bridge
+  - type: "slow"
+    count: 4
+    left: "yoshiko"
+    center: "hanamaru"
+    right: "ruby"
+  - type: "normal"
+    count: 4
+  # harahara
+  - type: "normal"
+    left: "none"
+    center: "yoshiko"
+    right: "none"
+  - type: "normalodd"
+  - type: "chase"
+    left: "hanamaru"
+    center: "none"
+    right: "ruby"
+  # munemune
+  - type: "normal"
+    left: "none"
+    center: "hanamaru"
+    right: "none"
+  - type: "normalodd"
+  - type: "chase"
+    left: "yoshiko"
+    center: "none"
+    right: "ruby"
+  # bakubaku
+  - type: "normal"
+    left: "none"
+    center: "ruby"
+    right: "none"
+  - type: "normalodd"
+  - type: "chase"
+    left: "yoshiko"
+    center: "none"
+    right: "hanamaru"
+  # ippozutsu
+  - type: "normal"
+    count: 4
+    left: "ruby"
+    center: "yoshiko"
+    right: "hanamaru"
+  - type: "slow3"
+    kwargs:
+      hold: True
+  - type: "hold"
+    count: 5
+    kwargs:
+      hold: True
+
+  # chorus 3
+  # doko kara
+  - type: "normal"
+    count: 2
+  # sunshine my road
+  - type: "flash"
+    left: "ruby"
+    center: "none"
+    right: "none"
+  - type: "flash"
+    left: "none"
+    center: "yoshiko"
+  - type: "flash"
+    center: "none"
+    right: "hanamaru"
+  - type: "chase"
+    left: "ruby"
+    center: "yoshiko"
+    right: "hanamaru"
+  # omoide saguru
+  - type: "normal"
+    count: 2
+  # sunshine my road
+  - type: "flash"
+    left: "none"
+    center: "none"
+    right: "hanamaru"
+  - type: "flash"
+    center: "yoshiko"
+    right: "none"
+  - type: "flash"
+    left: "ruby"
+    center: "none"
+  - type: "chase"
+    left: "ruby"
+    center: "yoshiko"
+    right: "hanamaru"
+  # ano toki
+  - type: "normal"
+    count: 10
+  # sunshine my road
+  - type: "flash"
+    left: "none"
+    center: "none"
+    right: "hanamaru"
+  - type: "flash"
+    center: "yoshiko"
+    right: "none"
+  - type: "flash"
+    left: "ruby"
+    center: "none"
+  - type: "chase"
+    left: "ruby"
+    center: "yoshiko"
+    right: "hanamaru"
+  # sen nado
+  - type: "normal"
+    count: 2
+  # sunshine my road
+  - type: "flash"
+    left: "ruby"
+    center: "none"
+    right: "none"
+  - type: "flash"
+    left: "none"
+    center: "yoshiko"
+  - type: "flash"
+    center: "none"
+    right: "hanamaru"
+  - type: "chase"
+    left: "ruby"
+    center: "yoshiko"
+    right: "hanamaru"
+  # itsu no ma
+  - type: "normal"
+    count: 5
+  # (daka)-ra
+  - type: "normalodd"
+  # hey
+  - type: "chase"
+  # dakara
+  - type: "normal"
+  - type: "normalodd"
+  # hey
+  - type: "chase"
+  # yamerarenai
+  - type: "normal"
+    count: 2
+  # [yamenai yo]
+  - type: "hajimariyamenai"
+  # kakenuke
+  - type: "normal"
+    count: 4
+  # go east go
+  - type: "hajimarigoeast"
+  # west
+  - type: "slow"
+
+  # outro
+  # hajimari to
+  - type: "normal"
+    count: 2
+  - type: "slow"
+  - type: "normal"
+    count: 2
+  - type: "slow"
+  - type: "normal"
+    count: 8
+  # owari wa
+  - type: "normal"
+    count: 2
+    left: "ruby"
+    center: "hanamaru"
+    right: "yoshiko"
+  - type: "slow"
+  - type: "normal"
+    count: 2
+  - type: "slow"
+  # itsu no
+  - type: "normal"
+    count: 3
+    left: "hanamaru"
+    center: "ruby"
+    right: "yoshiko"
+  - type: "slow3"
+    kwargs:
+      hold: True
+  - type: "hold"
+    count: 7
+    kwargs:
+      hold: True
+  # hajimari
+  - type: "slow"
+    bpm: 79
+    left: "hanamaru"
+    center: "yoshiko"
+    right: "ruby"
+  # road
+  - type: "slow"
+    bpm: 86
+  # (ri)-road
+  - type: "slow3"
+    kwargs:
+      hold: True

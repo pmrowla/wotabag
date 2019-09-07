@@ -94,7 +94,7 @@ class WotabagManager(object):
         self.strip.begin()
 
         # init playback
-        self.player = MPV(vid='no', hwdec='mmal', keep_open='yes', volume=volume, log_handler=self._mpv_log)
+        self.player = None
         self.song = None
         self._stopped = Event()
         self._stopped.set()
@@ -147,7 +147,6 @@ class WotabagManager(object):
         self.status = WotabagStatus.PLAYING
         self._status_lock.release()
 
-        self.player.volume = self.volume
         self._playback_thread = Thread(target=self._wota_playback)
         self.logger.debug('starting wota playback thread')
         self._playback_thread.start()
@@ -159,7 +158,8 @@ class WotabagManager(object):
             self._playback_thread = None
             self.logger.debug('joined wota playback thread')
         if self.player:
-            self.player.command('stop')
+            self.player.terminate()
+            self.player = None
         self.song = None
 
         for i in range(self.strip.numPixels()):
@@ -175,6 +175,9 @@ class WotabagManager(object):
             song, _ = self.playlist[self.current_track]
             self._load_file(song)
 
+            if self.player:
+                self.player.terminate()
+            self.player = MPV(vid='no', hwdec='mmal', keep_open='yes', volume=self.volume, log_handler=self._mpv_log)
             self.player.play(self.song['filename'])
 
             # wait for mpv to actually start playing
@@ -250,6 +253,8 @@ class WotabagManager(object):
                 self.player._playback_cond.wait(5)
 
             # end of song, setup next track
+            self.player.terminate()
+            self.player = None
             for i in range(self.strip.numPixels()):
                 self.strip.setPixelColor(i, BladeColor.NONE.value)
             self.strip.show()

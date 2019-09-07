@@ -1135,15 +1135,16 @@ class WotaAozoraMasshigura(BaseWota):
         q = self._count % 3
         for i in range(0, 27, 3):
             x = (i + q) // 9
+            y = (i + q) % 9
             if x == 0:
-                if i + q <= height:
+                if y <= height:
                     color = self.colors[0]
                 else:
                     color = BladeColor.NONE
             elif x == 1:
                 color = self.colors[1]
             elif x == 2:
-                if i + q <= height:
+                if y <= height:
                     color = self.colors[2]
                 else:
                     color = BladeColor.NONE

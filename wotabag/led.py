@@ -1509,6 +1509,44 @@ class WotaYumeFufufu(BaseWota):
         self._count += 1
 
 
+class WotaJimoAi(BaseWota):
+
+    def __init__(self, left=BladeColor.YOSHIKO, center=BladeColor.YOSHIKO, right=BladeColor.YOSHIKO, *args, **kwargs):
+        """Jimo Ai."""
+        super().__init__(beats=4, *args, **kwargs)
+        self.colors = (left, center, right)
+        self._count = 0
+
+    def tick(self, loop=False, **kwargs):
+        """Perform one tick from this pattern."""
+        count = self._count % len(self)
+
+        if count == 0:
+            for x, color in enumerate(self.colors):
+                for y in range(9):
+                    c = BladeColor.NONE
+                    if x == 1 or (x == 0 and y <= 4) or (x == 2 and y >= 4):
+                        if isinstance(color, tuple):
+                            c = color[y % len(color)]
+                        else:
+                            c = color
+                    self.strip.setPixelColor(pixel_index(x, y), c.value)
+            self.strip.show()
+        elif count == 16:
+            for x, color in enumerate(self.colors):
+                for y in range(9):
+                    c = BladeColor.NONE
+                    if x == 1 or (x == 0 and y >= 4) or (x == 2 and y <= 4):
+                        if isinstance(color, tuple):
+                            c = color[y % len(color)]
+                        else:
+                            c = color
+                    self.strip.setPixelColor(pixel_index(x, y), c.value)
+            self.strip.show()
+
+        self._count += 1
+
+
 WOTA_TYPE = {
     'slow': WotaSlow,
     'slow3': WotaSlow3,
@@ -1537,6 +1575,7 @@ WOTA_TYPE = {
     'atpfighting': WotaATPFighting,
     'yumefufu': WotaYumeFufu,
     'yumefufufu': WotaYumeFufufu,
+    'jimoai': WotaJimoAi,
 }
 
 

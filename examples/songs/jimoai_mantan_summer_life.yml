@@ -1,0 +1,139 @@
+title: "Jimo Ai ♡ Mantan ☆ Summer Life"
+filename: "/home/pi/wotabag/mp3/jimoai_mantan_summer_life.mp3"
+initial_offset: 1430
+patterns:
+  # intro
+  - type: "normal"
+    bpm: 170
+    count: 32
+    left: "you"
+    center:
+      - "you"
+      - "yoshiko"
+    right: "yoshiko"
+
+  # verse 1
+  # tooku tsudzuiteru
+  - type: "normal"
+    count: 32
+    left: "you"
+    center: "yoshiko"
+    right: "you"
+  # paatto hade
+  - type: "normal"
+    count: 32
+    left: "yoshiko"
+    center: "you"
+    right: "yoshiko"
+  # asa wa mada
+  - type: "normal"
+    count: 24
+    left: "you"
+    center: "yoshiko"
+    right: "you"
+
+  # chorus 1
+  # issho no natsu
+  - type: "normal"
+    count: 44
+    left: "you"
+    center:
+      - "you"
+      - "yoshiko"
+    right: "yoshiko"
+  # summer life
+  - type: "slow3"
+    kwargs:
+      hold: True
+  - type: "hold"
+    count: 5
+    kwargs:
+      hold: True
+
+  # break
+  - type: "jimoai"
+    count: 6
+
+  # verse 2
+  # (shiro)-i parasoru
+  - type: "normal"
+    count: 16
+    left: "yoshiko"
+    center: "you"
+    right: "yoshiko"
+  # dakedo hiyake
+  - type: "normal"
+    count: 16
+    left: "you"
+    center: "yoshiko"
+    right: "you"
+  # yuuyake no
+  - type: "normal"
+    count: 24
+    left: "yoshiko"
+    center: "you"
+    right: "yoshiko"
+
+  # chorus 2
+  # kondo no natsu
+  - type: "normal"
+    count: 32
+    left: "you"
+    center:
+      - "you"
+      - "yoshiko"
+    right: "yoshiko"
+  # (shichau mae) ni
+  - type: "slow3"
+    kwargs:
+      hold: True
+  - type: "hold"
+    count: 5
+    kwargs:
+      hold: True
+
+  # break
+  - type: "jimoai"
+    count: 6
+  - type: "chase"
+    count: 16
+
+  # chorus 3
+  # issho no natsu
+  - type: "slow"
+    count: 8
+  # (issho) ni kikitai
+  - type: "normal"
+    count: 28
+  # summer life
+  - type: "slow3"
+    kwargs:
+      hold: True
+  - type: "hold"
+    count: 5
+    kwargs:
+      hold: True
+  # sore ga
+  - type: "normal"
+    count: 12
+  # summer life
+  - type: "slow3"
+    kwargs:
+      hold: True
+  - type: "hold"
+    count: 5
+    kwargs:
+      hold: True
+
+  # outro
+  - type: "normal"
+    count: 24
+  - type: "jimoai"
+    count: 4
+  - type: "slow3"
+    kwargs:
+      hold: True
+  - type: "hold"
+    count: 5
+    kwargs:
+      hold: True
